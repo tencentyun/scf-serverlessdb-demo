@@ -1,4 +1,4 @@
-# Serverless MySQL 数据库 SDK V1
+# Serverless MySQL 数据库 SDK
 
 云函数和数据库一起使用时，大家经常有如下疑惑:
 
