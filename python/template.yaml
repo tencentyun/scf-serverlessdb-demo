@@ -1,0 +1,26 @@
+Resources:
+  default:
+    Type: 'TencentCloud::Serverless::Namespace'
+    mysql_demo_python:
+      Type: TencentCloud::Serverless::Function
+      Properties:
+        CodeUri: ./
+        Handler: index.main_handler
+        MemorySize: 128
+        Runtime: Python3.6
+        Timeout: 3
+        # 需要填写数据库实例所处的VPC网络
+        VpcConfig:
+          VpcId: "vpc-oyeye0y3"
+          SubnetId: "subnet-k93nsp5i"
+        Environment:
+          Variables:
+            # 格式 DB_{引用}_XXX，可通过 mysql.database(引用).connection() 拿到初始化好的数据库连接。
+            DB_DB1_HOST: "10.0.31.25" # DB1 实例的地址
+            DB_DB1_PORT: "3306" # DB1 实例的端口
+            DB_DB1_USER: "root" # DB1 实例的用户名
+            DB_DB1_PASSWORD: "1234qwer" # DB1 实例的密码
+            DB_DB1_DATABASE: "TEST" # DB1 实例的数据库
+            # 填写此配置，mysql.database() 默认使用 DB1，否则需要指定引用 mysql.database("DB1")。
+            DB_DEFAULT: "DB1" 
+
