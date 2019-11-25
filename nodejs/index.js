@@ -1,4 +1,5 @@
 'use strict';
+// node.js demo
 const database = require('scf-nodejs-serverlessdb-sdk').database;
 
 exports.main_handler = async (event, context, callback) => {
